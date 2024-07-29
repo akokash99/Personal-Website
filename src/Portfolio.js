@@ -1,6 +1,13 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 
-import { Github, Linkedin, ExternalLink, FileText } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  ExternalLink,
+  FileText,
+  Menu,
+  X,
+} from "lucide-react";
 
 const skills = [
   "Full stack development",
@@ -82,6 +89,7 @@ const experiences = [
 ];
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("about");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredExperience, setHoveredExperience] = useState(null);
   const [visibleExperiences, setVisibleExperiences] = useState({});
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -176,6 +184,11 @@ const Portfolio = () => {
     }
   };
   const headerHeight = 72;
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const scrollToSection = (sectionName) => {
     const section = sectionRefs[sectionName].current;
     if (section) {
@@ -186,15 +199,23 @@ const Portfolio = () => {
         behavior: "smooth",
       });
       setActiveSection(sectionName);
+      setIsMobileMenuOpen(false); // Close mobile menu after selection
     }
   };
 
   return (
     <div className="min-h-screen bg-black text-white p-8">
-      <header className="fixed top-0 left-0 right-0 bg-black z-50 px-8 py-4">
+      <header className="fixed top-0 left-0 right-0 bg-black z-50 px-4 sm:px-8 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="text-3xl font-bold text-white">AK</div>
-          <nav>
+
+          {/* Mobile menu button */}
+          <button className="sm:hidden text-white" onClick={toggleMobileMenu}>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Desktop navigation */}
+          <nav className="hidden sm:block">
             <ul className="flex space-x-6">
               {["About", "Skills", "Experience", "Projects", "Contact"].map(
                 (section, index) => (
@@ -214,16 +235,52 @@ const Portfolio = () => {
               )}
             </ul>
           </nav>
+
+          {/* Resume link (hidden on mobile) */}
           <a
             href="https://docs.google.com/document/d/e/2PACX-1vS7mIU1IJroipk0uY1s1cthjEKif2HyHaNrdhxls9yFuYCnt96AUTOAZKYLAqRsE8L6EiC_QbjpAOZv/pub"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition duration-300 flex items-center"
+            className="hidden sm:flex px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition duration-300 items-center"
           >
             <FileText className="mr-2" size={18} />
             Resume
           </a>
         </div>
+
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="sm:hidden mt-4 bg-gray-900 rounded-lg p-4">
+            <ul className="space-y-2">
+              {["About", "Skills", "Experience", "Projects", "Contact"].map(
+                (section, index) => (
+                  <li key={section}>
+                    <button
+                      onClick={() => scrollToSection(section.toLowerCase())}
+                      className={`text-sm w-full text-left py-2 px-4 rounded ${
+                        activeSection === section.toLowerCase()
+                          ? "bg-gray-800 text-white"
+                          : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                      }`}
+                    >
+                      {`0${index + 1}. ${section}`}
+                    </button>
+                  </li>
+                )
+              )}
+              <li>
+                <a
+                  href="https://docs.google.com/document/d/e/2PACX-1vS7mIU1IJroipk0uY1s1cthjEKif2HyHaNrdhxls9yFuYCnt96AUTOAZKYLAqRsE8L6EiC_QbjpAOZv/pub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm w-full text-left py-2 px-4 rounded text-gray-400 hover:bg-gray-800 hover:text-white flex items-center"
+                >
+                  <FileText className="mr-2" size={16} /> Resume
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
       </header>
       <main className="max-w-3xl mx-auto">
         <section ref={sectionRefs.about} className="mb-16">
