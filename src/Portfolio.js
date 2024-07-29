@@ -232,7 +232,7 @@ const Portfolio = () => {
             Abdallah Kokash.
           </h1>
           <h2 className="text-4xl font-bold mb-6 text-gray-300">
-            I code things and build applications
+            I build applications and software solutions
           </h2>
           <p className="text-gray-400 mb-8 max-w-xl">
             Forward-thinking Software Engineer with expertise in Full Stack
