@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/akokash.dev/static/css/main.9f768ae5.css",
-    "main.js": "/akokash.dev/static/js/main.a5660fb2.js",
-    "static/js/453.725277da.chunk.js": "/akokash.dev/static/js/453.725277da.chunk.js",
-    "index.html": "/akokash.dev/index.html",
-    "main.9f768ae5.css.map": "/akokash.dev/static/css/main.9f768ae5.css.map",
-    "main.a5660fb2.js.map": "/akokash.dev/static/js/main.a5660fb2.js.map",
-    "453.725277da.chunk.js.map": "/akokash.dev/static/js/453.725277da.chunk.js.map"
+    "main.css": "/static/css/main.9f768ae5.css",
+    "main.js": "/static/js/main.ade44464.js",
+    "static/js/453.725277da.chunk.js": "/static/js/453.725277da.chunk.js",
+    "index.html": "/index.html",
+    "main.9f768ae5.css.map": "/static/css/main.9f768ae5.css.map",
+    "main.ade44464.js.map": "/static/js/main.ade44464.js.map",
+    "453.725277da.chunk.js.map": "/static/js/453.725277da.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9f768ae5.css",
-    "static/js/main.a5660fb2.js"
+    "static/js/main.ade44464.js"
   ]
 }
