@@ -76,7 +76,7 @@ const experiences = [
     ],
   },
   {
-    title: "Machine Learning Engineer",
+    title: "Full-Stack Developer",
     company: "Roivant Sciences",
     period: "2022-2023",
     achievements: [
